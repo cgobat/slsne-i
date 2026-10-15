@@ -463,7 +463,7 @@ def calc_DL(redshift):
     DL : float
         Luminosity distance in pc
     """
-    DL = cosmo.luminosity_distance(z=redshift).to(u.pc).value
+    DL = cosmo.luminosity_distance(redshift).to_value(u.pc)
     return DL
 
 
@@ -481,8 +481,7 @@ def calc_DM(redshift):
     DM : float
         Distance modulus
     """
-    DL = calc_DL(redshift)
-    DM = 5 * np.log10(DL / 10)
+    DM = cosmo.distance_modulus(redshift)
     return DM
 
 
